@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Формула — научный калькулятор</title>
+    <meta
+      name="description"
+      content="Математика, физика и химия в одном удобном калькуляторе."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%232454df'/%3E%3Ctext x='8' y='30' fill='white' font-size='30'%3Eƒ%3C/text%3E%3C/svg%3E"
+    />
+    <script src="themes.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <aside>
+      <a class="brand" href="./"><b>ƒ</b> формула<span>LAB</span></a>
+      <button class="theme-trigger" id="theme-open">
+        <span class="palette-dots"><i></i><i></i><i></i></span
+        ><span>Оформление<small id="theme-name">Белый · голубой</small></span
+        ><span>↗</span></button
+      ><button id="chat-open" class="chat-nav" hidden>
+        <span>✦</span> ИИ-помощник <small>ЧАТ</small>
+      </button>
+      <div class="search">
+        <input
+          id="search"
+          aria-label="Найти калькулятор"
+          placeholder="Поиск инструмента…"
+        /><kbd>/</kbd>
+      </div>
+      <div class="nav-label">ПРЕДМЕТЫ</div>
+      <nav id="subjects"></nav>
+      <div class="nav-label tools-label">ИНСТРУМЕНТЫ</div>
+      <nav id="tools"></nav>
+      <div class="aside-foot">
+        Ваше пространство вычислений<br /><span
+          >Точность начинается с формулы.</span
+        >
+      </div>
+    </aside>
+    <main id="calculator-page">
+      <header>
+        <span id="breadcrumb">Рабочая тетрадь / Математика</span
+        ><span class="edition">SCIENTIFIC WORKSPACE · 01</span>
+      </header>
+      <section class="intro">
+        <div>
+          <div class="eyebrow" id="eyebrow">МАТЕМАТИКА</div>
+          <h1 id="title">Дроби</h1>
+          <p id="description">Точные вычисления с обыкновенными дробями.</p>
+        </div>
+        <div class="subject-symbol" id="symbol">⅟ₓ</div>
+      </section>
+      <div class="workspace">
+        <section class="panel input-panel">
+          <div class="panel-title">
+            <h2>Исходные данные</h2>
+            <button id="example" class="text-button">Пример ↗</button>
+          </div>
+          <form id="form">
+            <div id="fields"></div>
+            <details id="expression-tools" class="expression-tools" hidden>
+              <summary>Вставить степень, корень или скобки</summary>
+              <div id="expression-buttons" class="expression-buttons"></div>
+              <p>Выделите часть выражения, чтобы применить действие к ней.</p>
+            </details>
+            <p id="input-guide" class="input-guide"></p>
+            <button class="calculate" type="submit">
+              Вычислить <span>↗</span>
+            </button>
+          </form>
+          <p class="hint">Enter — вычислить · / — найти инструмент</p>
+        </section>
+        <section class="result-panel">
+          <div class="result-label">РЕЗУЛЬТАТ</div>
+          <div id="result" aria-live="polite"></div>
+          <div id="details"></div>
+          <div class="result-bottom">
+            <span>ФОРМУЛА / МЕТОД</span>
+            <div id="formula"></div>
+          </div>
+        </section>
+      </div>
+      <section class="below">
+        <div>
+          <span class="small-label">ПОЛЕЗНО ЗНАТЬ</span>
+          <p id="note"></p>
+        </div>
+        <div class="quick">
+          <span class="small-label">БЫСТРЫЙ ПЕРЕХОД</span>
+          <div id="quick"></div>
+        </div>
+      </section>
+      <section class="lesson-panel" aria-labelledby="lesson-title">
+        <div class="lesson-heading">
+          <div>
+            <span class="small-label">КОРОТКИЙ УРОК</span>
+            <h2 id="lesson-title"></h2>
+          </div>
+          <span class="lesson-badge">≈ 1 мин</span>
+        </div>
+        <p id="lesson-meaning" class="lesson-meaning"></p>
+        <div class="lesson-body">
+          <div>
+            <h3>Разберём на примере</h3>
+            <ol id="lesson-steps"></ol>
+          </div>
+          <div class="lesson-practice">
+            <h3>Попробуй сам</h3>
+            <p>Нажми на пример — он заполнит поля и покажет результат.</p>
+            <div id="lesson-examples"></div>
+          </div>
+        </div>
+        <p class="lesson-warning">
+          <b>Обрати внимание</b><span id="lesson-tip"></span>
+        </p>
+      </section>
+      <footer>
+        <span>Формула <b>LAB</b></span
+        ><span>Математика. Физика. Химия.</span>
+      </footer>
+    </main>
+    <main id="chat-page" hidden>
+      <header>
+        <span>Формула / ИИ-помощник</span
+        ><button id="new-chat" class="text-button">Новый диалог +</button>
+      </header>
+      <div class="chat-layout">
+        <section class="conversation">
+          <div class="chat-heading">
+            <span class="ai-mark">✦</span>
+            <div>
+              <h1>Разберёмся вместе</h1>
+              <p>От простого вопроса до сложной задачи.</p>
+            </div>
+          </div>
+          <div id="ai-status" class="ai-status" role="status">
+            Проверяем подключение…
+          </div>
+          <div
+            id="messages"
+            class="messages"
+            role="log"
+            aria-label="Диалог с помощником"
+            aria-live="polite"
+          ></div>
+          <div id="chat-starters" class="chat-starters">
+            <button
+              data-prompt="Объясни простыми словами, как складывать дроби."
+            >
+              <b>∑</b> Понять тему<span>Как складывать дроби? ↗</span></button
+            ><button
+              data-prompt="Почему напряжение, ток и сопротивление связаны законом Ома? Приведи понятный пример."
+            >
+              <b>ϟ</b> Найти объяснение<span
+                >Закон Ома на примере ↗</span
+              ></button
+            ><button
+              data-prompt="Научи расставлять коэффициенты в химических реакциях на примере H2 + O2 = H2O."
+            >
+              <b>⚗</b> Разобрать задачу<span
+                >Баланс химической реакции ↗</span
+              >
+            </button>
+          </div>
+          <form id="chat-form" class="chat-composer">
+            <label class="sr-only" for="chat-input">Сообщение помощнику</label
+            ><textarea
+              id="chat-input"
+              placeholder="Что хочешь понять?"
+              maxlength="4000"
+              rows="3"
+              required
+            ></textarea>
+            <div class="composer-bottom">
+              <span>Ctrl + Enter — отправить</span
+              ><button id="chat-stop" type="button" hidden>Остановить</button
+              ><button id="chat-send" type="submit">Отправить ↑</button>
+            </div>
+          </form>
+          <p id="chat-error" class="chat-error" role="alert"></p>
+          <p class="chat-privacy">
+            Сообщения и выбранный контекст отправляются в OpenAI. ИИ может
+            ошибаться — проверяй важные расчёты.
+          </p>
+        </section>
+        <section class="learning-profile">
+          <span class="small-label">ПОД ТВОЙ ТЕМП</span>
+          <h2>Как тебе объяснять?</h2>
+          <p>Настройки и текущий диалог помогают адаптировать ответы.</p>
+          <label
+            >Уровень<select id="learning-level">
+              <option value="auto">Подстроиться по диалогу</option>
+              <option value="beginner">С самых основ</option>
+              <option value="intermediate">Знаю основы</option>
+              <option value="advanced">Продвинутый</option>
+            </select></label
+          ><label
+            >Формат<select id="learning-style">
+              <option value="steps">По шагам</option>
+              <option value="short">Кратко и по делу</option>
+              <option value="examples">На примерах</option>
+              <option value="questions">Наводящими вопросами</option>
+            </select></label
+          ><label
+            >Что учитывать?<textarea
+              id="learning-goal"
+              maxlength="300"
+              placeholder="Например: учусь в вузе, хочу понимать вывод формул"
+              rows="3"
+            ></textarea></label
+          ><label class="context-toggle"
+            ><input type="checkbox" id="share-context" checked /><span
+              >Учитывать открытый калькулятор</span
+            ></label
+          >
+          <p id="context-name" class="context-name"></p>
+          <p class="profile-foot">
+            Настройки сохраняются на этом устройстве. Диалог — только до
+            закрытия вкладки.
+          </p>
+        </section>
+      </div>
+    </main>
+    <dialog
+      id="theme-dialog"
+      class="theme-dialog"
+      aria-labelledby="theme-title"
+    >
+      <div class="dialog-heading">
+        <div>
+          <span class="small-label">ТВОЁ ПРОСТРАНСТВО</span>
+          <h2 id="theme-title">Выбери настроение</h2>
+        </div>
+        <button id="theme-close" aria-label="Закрыть выбор оформления">
+          ×
+        </button>
+      </div>
+      <p>Шесть палитр. Один привычный калькулятор.</p>
+      <h3>Тёмные</h3>
+      <div id="dark-themes" class="theme-grid"></div>
+      <h3>Светлые</h3>
+      <div id="light-themes" class="theme-grid"></div>
+      <p class="theme-footer">Применяется сразу и сохраняется на устройстве.</p>
+    </dialog>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
