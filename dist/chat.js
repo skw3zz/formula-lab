@@ -1,5 +1,7 @@
 // История — в пределах вкладки. Предпочтения — на этом устройстве.
 export async function initChat({ initialChat, getContext }) {
+  // GitHub Pages обслуживает только статические файлы, сервер чата там отсутствует.
+  if (location.hostname.endsWith(".github.io")) return;
   const $ = (id) => document.getElementById(id);
   // Пока сервер не настроен, чат не появляется в навигации, даже по #chat.
   // После подключения ключа достаточно перезагрузить страницу.

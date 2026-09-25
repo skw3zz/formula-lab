@@ -1,12 +1,15 @@
 <!doctype html>
+<!-- Формула LAB · © 2026 skw3zz -->
 <html lang="ru">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Формула — научный калькулятор</title>
+    <title>Формула LAB — skw3zz</title>
+    <meta name="author" content="skw3zz" />
+    <meta name="copyright" content="© 2026 skw3zz" />
     <meta
       name="description"
-      content="Математика, физика и химия в одном удобном калькуляторе."
+      content="Научный калькулятор skw3zz: математика, физика и химия с примерами и объяснениями."
     />
     <link
       rel="icon"
@@ -18,6 +21,7 @@
   <body>
     <aside>
       <a class="brand" href="./"><b>ƒ</b> формула<span>LAB</span></a>
+      <div class="owner-signature">by <strong>skw3zz</strong></div>
       <button class="theme-trigger" id="theme-open">
         <span class="palette-dots"><i></i><i></i><i></i></span
         ><span>Оформление<small id="theme-name">Белый · голубой</small></span
@@ -37,15 +41,13 @@
       <div class="nav-label tools-label">ИНСТРУМЕНТЫ</div>
       <nav id="tools"></nav>
       <div class="aside-foot">
-        Ваше пространство вычислений<br /><span
-          >Точность начинается с формулы.</span
-        >
+        © 2026 skw3zz<br /><span>Формула LAB</span>
       </div>
     </aside>
     <main id="calculator-page">
       <header>
         <span id="breadcrumb">Рабочая тетрадь / Математика</span
-        ><span class="edition">SCIENTIFIC WORKSPACE · 01</span>
+        ><span class="edition">SKW3ZZ / FORMULA LAB</span>
       </header>
       <section class="intro">
         <div>
@@ -76,7 +78,7 @@
           <p class="hint">Enter — вычислить · / — найти инструмент</p>
         </section>
         <section class="result-panel">
-          <div class="result-label">РЕЗУЛЬТАТ</div>
+          <div class="result-heading"><div class="result-label">РЕЗУЛЬТАТ</div><span class="result-watermark">ƒ / skw3zz</span></div>
           <div id="result" aria-live="polite"></div>
           <div id="details"></div>
           <div class="result-bottom">
@@ -121,7 +123,7 @@
       </section>
       <footer>
         <span>Формула <b>LAB</b></span
-        ><span>Математика. Физика. Химия.</span>
+        ><span>© 2026 <b>skw3zz</b> · Все права сохранены</span>
       </footer>
     </main>
     <main id="chat-page" hidden>
@@ -233,14 +235,14 @@
     >
       <div class="dialog-heading">
         <div>
-          <span class="small-label">ТВОЁ ПРОСТРАНСТВО</span>
-          <h2 id="theme-title">Выбери настроение</h2>
+          <span class="small-label">ОФОРМЛЕНИЕ</span>
+          <h2 id="theme-title">Цветовая тема</h2>
         </div>
         <button id="theme-close" aria-label="Закрыть выбор оформления">
           ×
         </button>
       </div>
-      <p>Шесть палитр. Один привычный калькулятор.</p>
+      <p>Выберите фон и акцентный цвет.</p>
       <h3>Тёмные</h3>
       <div id="dark-themes" class="theme-grid"></div>
       <h3>Светлые</h3>

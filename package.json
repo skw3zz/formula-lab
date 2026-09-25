@@ -6,5 +6,7 @@
     "start": "node server.js",
     "test": "node --test tests/*.test.js",
     "build": "node build.mjs"
-  }
+  },
+  "author": "skw3zz",
+  "license": "UNLICENSED"
 }
